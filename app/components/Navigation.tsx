@@ -55,7 +55,7 @@ const Navigation = () => {
                             }}
                             className="text-2xl font-bold gradient-text cursor-pointer"
                         >
-                            &lt;DevIA/&gt;
+                            &lt;CedricDSST/&gt;
                         </a>
                     </motion.div>
 
