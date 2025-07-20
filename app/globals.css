@@ -89,28 +89,6 @@ svg *:focus-visible {
   background-clip: text;
 }
 
-/* Animated border */
-.animated-border {
-  position: relative;
-  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-}
-
-.animated-border::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1px;
-  background: linear-gradient(45deg, #00d9ff, #ffffff, #00d9ff);
-  border-radius: inherit;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-}
-
 /* Smooth transitions */
 .transition-smooth {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
