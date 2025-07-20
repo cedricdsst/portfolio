@@ -15,19 +15,20 @@ const HeroSection = () => {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.3
+                staggerChildren: 0.4,
+                delayChildren: 0.2
             }
         }
     }
 
     const itemVariants = {
-        hidden: { y: 30, opacity: 0 },
+        hidden: { y: 50, opacity: 0 },
         visible: {
             y: 0,
             opacity: 1,
             transition: {
-                duration: 0.6,
-                ease: "easeOut"
+                duration: 0.8,
+                ease: [0.25, 0.25, 0.25, 0.75]
             }
         }
     }
@@ -37,7 +38,7 @@ const HeroSection = () => {
     }
 
     return (
-        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
             {/* Animated background elements */}
             <div className="absolute inset-0">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse-slow"></div>
@@ -49,26 +50,31 @@ const HeroSection = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate={inView ? "visible" : "hidden"}
-                className="text-center z-10 px-4 sm:px-6 lg:px-8"
+                className="text-center z-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
             >
-                {/* Greeting */}
-                <motion.div variants={itemVariants} className="mb-6">
-                    <span className="text-accent text-lg font-mono">Salut, je suis</span>
+                {/* Name */}
+                <motion.div variants={itemVariants} className="mb-8 sm:mb-12">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                        <span className="text-accent">Cédric DOUSSET</span>
+                    </h2>
                 </motion.div>
 
-                {/* Name */}
-                <motion.h1 variants={itemVariants} className="mb-8">
-                    <span className="text-4xl sm:text-6xl lg:text-8xl font-bold gradient-text block">
-                        Développeur
+                {/* Title */}
+                <motion.h1 
+                    variants={itemVariants} 
+                    className="mb-8 sm:mb-12"
+                >
+                    <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold gradient-text leading-tight block sm:inline">
+                        Développeur Web
                     </span>
-                    <span className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white mt-2 block">
-                        IA & Web
+                    <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight block sm:inline sm:ml-4 mt-2 sm:mt-0">
+                        & IA
                     </span>
                 </motion.h1>
 
                 {/* Subtitle */}
-                <motion.div variants={itemVariants} className="mb-12 max-w-2xl mx-auto">
-                    <p className="text-xl sm:text-2xl text-gray-300 leading-relaxed">
+                <motion.div variants={itemVariants} className="mb-12 sm:mb-16 max-w-3xl mx-auto">
+                    <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed px-4">
                         Spécialisé dans l&apos;
                         <span className="text-accent font-semibold">intégration d&apos;intelligence artificielle</span>
                         {' '}au sein d&apos;applications web modernes
@@ -76,12 +82,12 @@ const HeroSection = () => {
                 </motion.div>
 
                 {/* CTA Buttons */}
-                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16 sm:mb-20">
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="px-8 py-4 bg-accent text-dark-900 font-semibold rounded-lg glow-accent hover:bg-accent/90 transition-all duration-300 min-w-[200px]"
+                        className="px-6 sm:px-8 py-3 sm:py-4 bg-accent text-dark-900 font-semibold rounded-lg glow-accent hover:bg-accent/90 transition-all duration-300 w-full sm:w-auto sm:min-w-[180px] text-sm sm:text-base"
                     >
                         Me contacter
                     </motion.button>
@@ -90,14 +96,14 @@ const HeroSection = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => document.querySelector('#experience')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="px-8 py-4 border border-accent text-accent font-semibold rounded-lg hover:bg-accent/10 transition-all duration-300 min-w-[200px]"
+                        className="px-6 sm:px-8 py-3 sm:py-4 border border-accent text-accent font-semibold rounded-lg hover:bg-accent/10 transition-all duration-300 w-full sm:w-auto sm:min-w-[180px] text-sm sm:text-base"
                     >
                         Voir mes projets
                     </motion.button>
                 </motion.div>
 
                 {/* Social Links */}
-                <motion.div variants={itemVariants} className="flex gap-8 justify-center mb-16">
+                <motion.div variants={itemVariants} className="flex gap-4 sm:gap-6 lg:gap-8 justify-center mb-16 sm:mb-20">
                     {[
                         { icon: Github, href: '#', label: 'GitHub' },
                         { icon: Linkedin, href: '#', label: 'LinkedIn' },

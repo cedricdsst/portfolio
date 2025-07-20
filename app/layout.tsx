@@ -5,16 +5,21 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'Portfolio - Développeur IA & Web',
-    description: 'Portfolio moderne d\'un développeur web spécialisé en intégration d\'intelligence artificielle dans les applications web.',
-    keywords: ['développeur web', 'intelligence artificielle', 'IA', 'NextJS', 'React', 'portfolio'],
-    authors: [{ name: 'Portfolio Dev' }],
+    title: 'Portfolio - Cédric DOUSSET - Développeur Web & IA',
+    description: 'Portfolio moderne de Cédric DOUSSET, développeur web spécialisé en intégration d\'intelligence artificielle dans les applications web.',
+    keywords: ['développeur web', 'intelligence artificielle', 'IA', 'NextJS', 'React', 'portfolio', 'Cédric DOUSSET'],
+    authors: [{ name: 'Cédric DOUSSET' }],
     viewport: 'width=device-width, initial-scale=1',
     robots: 'index, follow',
     openGraph: {
-        title: 'Portfolio - Développeur IA & Web',
-        description: 'Portfolio moderne d\'un développeur web spécialisé en intégration d\'intelligence artificielle.',
+        title: 'Portfolio - Cédric DOUSSET - Développeur Web & IA',
+        description: 'Portfolio moderne de Cédric DOUSSET, développeur web spécialisé en intégration d\'intelligence artificielle.',
         type: 'website',
+    },
+    twitter: {
+        card: 'summary',
+        title: 'Portfolio - Cédric DOUSSET - Développeur Web & IA',
+        description: 'Portfolio moderne de Cédric DOUSSET, développeur web spécialisé en intégration d\'intelligence artificielle.',
     },
 }
 
