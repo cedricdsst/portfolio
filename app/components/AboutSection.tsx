@@ -41,7 +41,7 @@ const AboutSection = () => {
                         className="space-y-6"
                     >
                         <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">
-                            Passionné par l&apos;<span className="text-accent">innovation</span> technologique
+                            Passionné par l&apos;<span className="text-accent">innovation</span>
                         </h3>
 
                         <p className="text-gray-300 text-lg leading-relaxed">
@@ -74,22 +74,22 @@ const AboutSection = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="grid grid-cols-1 gap-6"
                     >
-                        {[
-                            {
-                                icon: Brain,
-                                title: "Intelligence Artificielle",
-                                description: "Intégration d'IA dans les applications web pour des expériences utilisateur révolutionnaires"
-                            },
-                            {
-                                icon: Code,
-                                title: "Développement Web",
-                                description: "Création d'applications web modernes, performantes et scalables"
-                            },
-                            {
-                                icon: Zap,
-                                title: "Innovation",
-                                description: "Toujours à la pointe des dernières technologies et tendances du développement"
-                            }
+                        {[{
+                            icon: Code,
+                            title: "Développement Web",
+                            description: "Création d'applications web modernes, performantes et scalables"
+                        },
+                        {
+                            icon: Brain,
+                            title: "Intelligence Artificielle",
+                            description: "Intégration d'IA dans les applications web pour des expériences utilisateur révolutionnaires"
+                        },
+
+                        {
+                            icon: Zap,
+                            title: "Innovation",
+                            description: "Toujours à la pointe des dernières technologies et tendances du développement"
+                        }
                         ].map((item, index) => (
                             <motion.div
                                 key={item.title}

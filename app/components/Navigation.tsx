@@ -53,7 +53,7 @@ const Navigation = () => {
                                 e.preventDefault()
                                 scrollToSection('#hero')
                             }}
-                            className="text-2xl font-bold gradient-text cursor-pointer"
+                            className="text-1xl font-bold gradient-text cursor-pointer"
                         >
                             &lt;CedricDSST/&gt;
                         </a>

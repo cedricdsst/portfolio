@@ -1,15 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Github, Linkedin, Twitter, Heart } from 'lucide-react'
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
 
     const socialLinks = [
-        { icon: Github, href: '#', label: 'GitHub' },
-        { icon: Linkedin, href: '#', label: 'LinkedIn' },
-        { icon: Mail, href: '#contact', label: 'Email' }
+        { icon: Github, href: 'https://github.com/cedricdsst', label: 'GitHub' },
+        { icon: Linkedin, href: 'https://www.linkedin.com/in/c%C3%A9dric-dousset-951110210/', label: 'LinkedIn' },
+        { icon: Twitter, href: 'https://x.com/cedric_dsst', label: 'Twitter' }
     ]
 
     const quickLinks = [
@@ -45,7 +45,7 @@ const Footer = () => {
                         viewport={{ once: true }}
                     >
                         <div className="mb-4">
-                            <span className="text-2xl font-bold gradient-text">&lt;DevIA/&gt;</span>
+                            <span className="text-1xl font-bold gradient-text">&lt;CedricDSST/&gt;</span>
                         </div>
                         <p className="text-gray-300 mb-6 leading-relaxed">
                             Développeur web passionné par l&apos;intégration d&apos;intelligence artificielle
@@ -56,6 +56,8 @@ const Footer = () => {
                                 <motion.a
                                     key={label}
                                     href={href}
+                                    target={href.startsWith('http') ? "_blank" : undefined}
+                                    rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
                                     onClick={href.startsWith('#') ? (e) => { e.preventDefault(); scrollToSection(href); } : undefined}
                                     whileHover={{ scale: 1.1, y: -2 }}
                                     whileTap={{ scale: 0.9 }}
@@ -126,18 +128,18 @@ const Footer = () => {
                     className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4"
                 >
                     <p className="text-gray-400 text-sm">
-                        © {currentYear} DevIA Portfolio. Tous droits réservés.
+                        © {currentYear} CedricDSST Portfolio. Tous droits réservés.
                     </p>
 
                     <div className="flex items-center gap-2 text-gray-400 text-sm">
-                        <span>Conçu avec</span>
+                        <span>Made with</span>
                         <motion.div
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ duration: 1, repeat: Infinity }}
                         >
                             <Heart className="w-4 h-4 text-red-500 fill-current" />
                         </motion.div>
-                        <span>et NextJS</span>
+                        <span>and NextJS</span>
                     </div>
                 </motion.div>
             </div>
