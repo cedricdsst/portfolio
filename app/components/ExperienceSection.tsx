@@ -12,30 +12,32 @@ const ExperienceSection = () => {
 
     const experiences = [
         {
-            company: "Tech Innovation Lab",
-            position: "Développeur Full-Stack IA",
-            location: "Paris, France",
-            period: "2023 - Présent",
-            description: "Développement d'applications web intégrant des modèles d'IA pour l'automatisation des processus métier. Mise en place d'architectures scalables et optimisation des performances.",
+            company: "General Electric Healthcare",
+            position: "Développeur Web & Gestionnaire de Données",
+            location: "Limonest, France",
+            period: "2023 - 2025",
+            description: "Développement d'applications web outils internes et gestion de données pour GE Healthcare. Travail sur des solutions innovantes pour le secteur médical avec une forte composante technique.",
             achievements: [
-                "Réduction de 40% du temps de traitement grâce à l'intégration d'IA",
-                "Développement d'un chatbot intelligent avec 95% de satisfaction client",
-                "Migration vers une architecture microservices"
+                "Développement d'applications web outils internes pour optimiser les processus métier",
+                "Gestion et maintenance de bases de données complexes (Oracle, Amazon Redshift)",
+                "Intégration et développement avec Salesforce pour la gestion client",
+                "Utilisation de Talend pour l'ETL et la transformation de données"
             ],
-            technologies: ["React", "Next.js", "Python", "OpenAI API", "Docker"]
+            technologies: ["JavaScript", "PHP", "Java", "Talend", "Oracle", "Amazon Redshift", "Salesforce"]
         },
         {
-            company: "Digital Solutions",
-            position: "Développeur Frontend Senior",
-            location: "Lyon, France",
-            period: "2021 - 2023",
-            description: "Conception et développement d'interfaces utilisateur modernes pour des applications web complexes. Encadrement d'une équipe de 3 développeurs juniors.",
+            company: "Freelance",
+            position: "Développeur Web Full-Stack",
+            location: "France",
+            period: "2021 - Présent",
+            description: "Développement de sites web et d'applications web pour divers clients en tant que freelance. Conception de solutions sur mesure adaptées aux besoins spécifiques de chaque projet.",
             achievements: [
-                "Amélioration de 60% des métriques UX",
-                "Mise en place d'un design system complet",
-                "Formation et mentoring de développeurs juniors"
+                "Développement de sites web et applications web pour clients variés",
+                "Conception de solutions sur mesure adaptées aux besoins métier",
+                "Gestion complète de projets de la conception à la livraison",
+                "Maintenance et évolution continue des applications déployées"
             ],
-            technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js"]
+            technologies: ["React", "Next.js", "JavaScript", "PHP", "Node.js", "MySQL", "PostgreSQL"]
         }
     ]
 
