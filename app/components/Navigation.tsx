@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import LanguageSwitcher from './LanguageSwitcher'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -16,11 +18,12 @@ const Navigation = () => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    const { t } = useLanguage()
     const navItems = [
-        { href: '#about', label: 'À propos' },
-        { href: '#skills', label: 'Compétences' },
-        { href: '#experience', label: 'Expérience' },
-        { href: '#contact', label: 'Contact' },
+        { href: '#about', label: t.nav.about },
+        { href: '#skills', label: t.nav.skills },
+        { href: '#experience', label: t.nav.experience },
+        { href: '#contact', label: t.nav.contact },
     ]
 
     const scrollToSection = (href: string) => {
@@ -74,9 +77,10 @@ const Navigation = () => {
                                     whileTap={{ scale: 0.95 }}
                                     className="text-gray-300 hover:text-accent transition-colors duration-300 px-3 py-2 text-sm font-medium cursor-pointer"
                                 >
-                                    {item.label}
+                                    <span suppressHydrationWarning>{item.label}</span>
                                 </motion.a>
                             ))}
+                            <LanguageSwitcher />
                         </div>
                     </div>
 
@@ -115,6 +119,7 @@ const Navigation = () => {
                             {item.label}
                         </motion.a>
                     ))}
+                    <div className="px-3 py-2"><LanguageSwitcher /></div>
                 </div>
             </motion.div>
         </motion.nav>

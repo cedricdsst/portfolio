@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { GraduationCap, Code2, Database, Brain, Globe, Zap } from 'lucide-react'
 import CustomRadarChart from './RadarChart'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const SkillsSection = () => {
     const [ref, inView] = useInView({
@@ -11,24 +12,12 @@ const SkillsSection = () => {
         threshold: 0.1,
     })
 
-    const diplomas = [
-        {
-            title: "Master en Informatique",
-            school: "Université de Technologie",
-            year: "2022",
-            specialty: "Intelligence Artificielle & Machine Learning"
-        },
-        {
-            title: "Licence Informatique",
-            school: "Institut Supérieur du Numérique",
-            year: "2020",
-            specialty: "Développement Web & Mobile"
-        }
-    ]
+    const { t } = useLanguage()
+    const diplomas = t.skills.degrees
 
     const skillsData = [
         {
-            category: "Frontend",
+            category: t.skills.categories.frontend,
             icon: Globe,
             color: "from-blue-500 to-cyan-400",
             strokeColor: "rgb(59, 130, 246)", // blue-500
@@ -43,7 +32,7 @@ const SkillsSection = () => {
             ]
         },
         {
-            category: "Backend",
+            category: t.skills.categories.backend,
             icon: Database,
             color: "from-green-500 to-emerald-400",
             strokeColor: "rgb(34, 197, 94)", // green-500
@@ -58,7 +47,7 @@ const SkillsSection = () => {
             ]
         },
         {
-            category: "Intelligence Artificielle",
+            category: t.skills.categories.ai,
             icon: Brain,
             color: "from-purple-500 to-pink-400",
             strokeColor: "rgb(168, 85, 247)", // purple-500
@@ -73,7 +62,7 @@ const SkillsSection = () => {
             ]
         },
         {
-            category: "DevOps & Outils",
+            category: t.skills.categories.devops,
             icon: Zap,
             color: "from-orange-500 to-red-400",
             strokeColor: "rgb(249, 115, 22)", // orange-500
@@ -106,11 +95,11 @@ const SkillsSection = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        <span className="gradient-text">Compétences</span>
+                        <span className="gradient-text" suppressHydrationWarning>{t.skills.title}</span>
                     </h2>
                     <div className="w-20 h-1 bg-accent mx-auto mb-6"></div>
-                    <p className="text-gray-300 text-xl max-w-3xl mx-auto">
-                        Une expertise technique visualisée à travers des graphiques radar interactifs
+                    <p className="text-gray-300 text-xl max-w-3xl mx-auto" suppressHydrationWarning>
+                        {t.skills.blurb}
                     </p>
                 </motion.div>
 
@@ -123,7 +112,7 @@ const SkillsSection = () => {
                 >
                     <h3 className="text-2xl font-bold text-center mb-8 flex items-center justify-center gap-3">
                         <GraduationCap className="w-8 h-8 text-accent" />
-                        Diplômes & Formation
+                        <span suppressHydrationWarning>{t.skills.degreesTitle}</span>
                     </h3>
 
                     <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -162,7 +151,7 @@ const SkillsSection = () => {
                 >
                     <h3 className="text-2xl font-bold text-center mb-12 flex items-center justify-center gap-3">
                         <Code2 className="w-8 h-8 text-accent" />
-                        Compétences Techniques
+                        <span suppressHydrationWarning>{t.skills.techTitle}</span>
                     </h3>
 
                     <div className="grid lg:grid-cols-2 gap-8">

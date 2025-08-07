@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Briefcase, FolderOpen, ExternalLink, Calendar, MapPin } from 'lucide-react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const ExperienceSection = () => {
     const [ref, inView] = useInView({
@@ -10,81 +11,10 @@ const ExperienceSection = () => {
         threshold: 0.1,
     })
 
-    const experiences = [
-        {
-            company: "General Electric Healthcare",
-            position: "Développeur Web & Gestionnaire de Données",
-            location: "Limonest, France",
-            period: "2023 - 2025",
-            description: "Développement d'applications web outils internes et gestion de données pour GE Healthcare. Travail sur des solutions innovantes pour le secteur médical avec une forte composante technique.",
-            achievements: [
-                "Développement d'applications web outils internes pour optimiser les processus métier",
-                "Gestion et maintenance de bases de données complexes (Oracle, Amazon Redshift)",
-                "Intégration et développement avec Salesforce pour la gestion client",
-                "Utilisation de Talend pour l'ETL et la transformation de données"
-            ],
-            technologies: ["JavaScript", "PHP", "Java", "Talend", "Oracle", "Amazon Redshift", "Salesforce"]
-        },
-        {
-            company: "Freelance",
-            position: "Développeur Web Full-Stack",
-            location: "France",
-            period: "2021 - Présent",
-            description: "Développement de sites web et d'applications web pour divers clients en tant que freelance. Conception de solutions sur mesure adaptées aux besoins spécifiques de chaque projet.",
-            achievements: [
-                "Développement de sites web et applications web pour clients variés",
-                "Conception de solutions sur mesure adaptées aux besoins métier",
-                "Gestion complète de projets de la conception à la livraison",
-                "Maintenance et évolution continue des applications déployées"
-            ],
-            technologies: ["React", "Next.js", "JavaScript", "PHP", "Node.js", "MySQL", "PostgreSQL"]
-        }
-    ]
+    const { t } = useLanguage()
+    const experiences = t.experience.jobs
 
-    const projects = [
-        {
-            title: "AI Content Generator",
-            description: "Plateforme de génération de contenu intelligent utilisant GPT-4 pour créer du contenu optimisé SEO.",
-            image: "/api/placeholder/400/250",
-            technologies: ["Next.js", "OpenAI API", "Prisma", "PostgreSQL"],
-            features: [
-                "Génération automatique d'articles",
-                "Optimisation SEO intelligente",
-                "Interface utilisateur intuitive",
-                "Dashboard analytique"
-            ],
-            link: "#",
-            github: "#"
-        },
-        {
-            title: "Smart Analytics Dashboard",
-            description: "Dashboard d'analyse prédictive utilisant l'IA pour identifier les tendances et anomalies dans les données.",
-            image: "/api/placeholder/400/250",
-            technologies: ["React", "Python", "TensorFlow", "D3.js"],
-            features: [
-                "Analyse prédictive en temps réel",
-                "Détection d'anomalies automatique",
-                "Visualisations interactives",
-                "Alertes intelligentes"
-            ],
-            link: "#",
-            github: "#"
-        },
-        {
-            title: "E-commerce AI Recommender",
-            description: "Système de recommandation intelligent pour plateforme e-commerce basé sur l'analyse comportementale.",
-            image: "/api/placeholder/400/250",
-            technologies: ["Vue.js", "Node.js", "MongoDB", "TensorFlow"],
-            features: [
-                "Recommandations personnalisées",
-                "Analyse comportementale",
-                "A/B testing intégré",
-                "Performance optimisée"
-            ],
-            link: "#",
-            github: "#"
-        }
-    ]
+    const projects = t.experience.projects.map((p) => ({ ...p, image: '/api/placeholder/400/250', link: '#', github: '#' }))
 
     return (
         <section id="experience" className="py-20 bg-dark-800 relative overflow-hidden">
@@ -103,11 +33,11 @@ const ExperienceSection = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        <span className="gradient-text">Expérience</span>
+                        <span className="gradient-text" suppressHydrationWarning>{t.experience.title}</span>
                     </h2>
                     <div className="w-20 h-1 bg-accent mx-auto mb-6"></div>
-                    <p className="text-gray-300 text-xl max-w-3xl mx-auto">
-                        Parcours professionnel et projets qui illustrent ma passion pour l&apos;innovation technologique
+                    <p className="text-gray-300 text-xl max-w-3xl mx-auto" suppressHydrationWarning>
+                        {t.experience.blurb}
                     </p>
                 </motion.div>
 
@@ -120,7 +50,7 @@ const ExperienceSection = () => {
                 >
                     <h3 className="text-2xl font-bold text-center mb-12 flex items-center justify-center gap-3">
                         <Briefcase className="w-8 h-8 text-accent" />
-                        Expériences Professionnelles
+                        <span suppressHydrationWarning>{t.experience.jobsTitle}</span>
                     </h3>
 
                     <div className="space-y-8">
@@ -162,7 +92,7 @@ const ExperienceSection = () => {
                                     <div className="lg:col-span-2">
                                         <p className="text-gray-300 mb-4 leading-relaxed">{exp.description}</p>
 
-                                        <h5 className="text-white font-semibold mb-3">Réalisations clés :</h5>
+                                        <h5 className="text-white font-semibold mb-3">{t.experience.achievementsTitle}</h5>
                                         <ul className="space-y-2">
                                             {exp.achievements.map((achievement, achIndex) => (
                                                 <li key={achIndex} className="flex items-start gap-2 text-gray-300">
@@ -186,7 +116,7 @@ const ExperienceSection = () => {
                 >
                     <h3 className="text-2xl font-bold text-center mb-12 flex items-center justify-center gap-3">
                         <FolderOpen className="w-8 h-8 text-accent" />
-                        Projets Personnels
+                        <span suppressHydrationWarning>{t.experience.projectsTitle}</span>
                     </h3>
 
                     <div className="grid lg:grid-cols-3 gap-8">
@@ -238,7 +168,7 @@ const ExperienceSection = () => {
                                             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-accent text-dark-900 font-semibold rounded-lg hover:bg-accent/90 transition-colors duration-300 text-sm"
                                         >
                                             <ExternalLink size={16} />
-                                            Demo
+                                            {t.experience.demo}
                                         </motion.a>
                                         <motion.a
                                             href={project.github}
@@ -246,7 +176,7 @@ const ExperienceSection = () => {
                                             whileTap={{ scale: 0.95 }}
                                             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-accent text-accent rounded-lg hover:bg-accent/10 transition-colors duration-300 text-sm"
                                         >
-                                            Code
+                                            {t.experience.code}
                                         </motion.a>
                                     </div>
                                 </div>

@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Twitter, Heart } from 'lucide-react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
 
+    const { t } = useLanguage()
     const socialLinks = [
         { icon: Github, href: 'https://github.com/cedricdsst', label: 'GitHub' },
         { icon: Linkedin, href: 'https://www.linkedin.com/in/c%C3%A9dric-dousset-951110210/', label: 'LinkedIn' },
@@ -13,10 +15,10 @@ const Footer = () => {
     ]
 
     const quickLinks = [
-        { name: 'À propos', href: '#about' },
-        { name: 'Compétences', href: '#skills' },
-        { name: 'Expérience', href: '#experience' },
-        { name: 'Contact', href: '#contact' }
+        { name: t.nav.about, href: '#about' },
+        { name: t.nav.skills, href: '#skills' },
+        { name: t.nav.experience, href: '#experience' },
+        { name: t.nav.contact, href: '#contact' }
     ]
 
     const scrollToSection = (href: string) => {
@@ -48,8 +50,7 @@ const Footer = () => {
                             <span className="text-1xl font-bold gradient-text">&lt;CedricDSST/&gt;</span>
                         </div>
                         <p className="text-gray-300 mb-6 leading-relaxed">
-                            Développeur web passionné par l&apos;intégration d&apos;intelligence artificielle
-                            dans les applications modernes.
+                            {t.footer.tagline}
                         </p>
                         <div className="flex gap-4">
                             {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -77,7 +78,7 @@ const Footer = () => {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         viewport={{ once: true }}
                     >
-                        <h3 className="text-white font-semibold text-lg mb-4">Navigation</h3>
+                        <h3 className="text-white font-semibold text-lg mb-4" suppressHydrationWarning>{t.footer.nav}</h3>
                         <ul className="space-y-3">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
@@ -104,7 +105,7 @@ const Footer = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        <h3 className="text-white font-semibold text-lg mb-4">Technologies</h3>
+                        <h3 className="text-white font-semibold text-lg mb-4" suppressHydrationWarning>{t.footer.technologies}</h3>
                         <div className="flex flex-wrap gap-2">
                             {['React', 'Next.js', 'TypeScript', 'Python', 'IA', 'Node.js'].map((tech) => (
                                 <motion.span
@@ -127,19 +128,17 @@ const Footer = () => {
                     viewport={{ once: true }}
                     className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4"
                 >
-                    <p className="text-gray-400 text-sm">
-                        © {currentYear} CedricDSST Portfolio. Tous droits réservés.
-                    </p>
+                    <p className="text-gray-400 text-sm">© {currentYear} CedricDSST Portfolio. {t.footer.rights}</p>
 
                     <div className="flex items-center gap-2 text-gray-400 text-sm">
-                        <span>Made with</span>
+                        <span>{t.footer.madeWith}</span>
                         <motion.div
                             animate={{ scale: [1, 1.2, 1] }}
                             transition={{ duration: 1, repeat: Infinity }}
                         >
                             <Heart className="w-4 h-4 text-red-500 fill-current" />
                         </motion.div>
-                        <span>and NextJS</span>
+                        <span>{t.footer.andNext}</span>
                     </div>
                 </motion.div>
             </div>
