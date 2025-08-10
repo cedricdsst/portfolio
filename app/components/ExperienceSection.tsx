@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Briefcase, FolderOpen, ExternalLink, Calendar, MapPin } from 'lucide-react'
+import { Briefcase, FolderOpen, ExternalLink, Calendar, MapPin, Github } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const ExperienceSection = () => {
@@ -11,10 +11,61 @@ const ExperienceSection = () => {
         threshold: 0.1,
     })
 
-    const { t } = useLanguage()
+    const { t, language } = useLanguage()
     const experiences = t.experience.jobs
 
-    const projects = t.experience.projects.map((p) => ({ ...p, image: '/api/placeholder/400/250', link: '#', github: '#' }))
+    type BaseProject = typeof t.experience.projects[number]
+    type ProjectCard = {
+        title: string
+        description: string
+        image?: string
+        technologies: string[]
+        features: string[]
+        link?: string
+        github?: string
+    }
+
+    const projects: ProjectCard[] = t.experience.projects.map((p: BaseProject) => ({
+        title: String(p.title),
+        description: String(p.description),
+        technologies: [...p.technologies].map(String),
+        features: [...p.features].map(String)
+    }))
+
+    // Override first placeholder with real project: OrderAI Drive-Through
+    if (projects.length > 0) {
+        const frProject: ProjectCard = {
+            title: 'OrderAI',
+            description:
+                "Application Next.js simulant une prise de commande en drive-through pilotée par l'IA.",
+            technologies: ['Next.js', 'OpenAI API', 'TypeScript', 'Tailwind', 'Vercel'],
+            features: [
+                '🌐 Bilingue (FR/EN) avec sélection au démarrage',
+                '🔒 Anti-hallucination (validation stricte côté serveur)',
+                '✅ Détection intelligente de fin de commande',
+            ],
+            link: 'https://order-ai-v3.vercel.app/',
+            github: 'https://github.com/cedricdsst/orderAI',
+            image: '/projects/orderai.png',
+        }
+
+        const enProject: ProjectCard = {
+            title: 'OrderAI',
+            description:
+                "Next.js app simulating an AI-powered drive-through ordering flow.",
+            technologies: ['Next.js', 'OpenAI API', 'TypeScript', 'Tailwind', 'Vercel'],
+            features: [
+                '🌐 Bilingual (FR/EN) with language selection at start',
+                '🔒 Anti-hallucination (strict server-side validation)',
+                '✅ Smart end-of-order detection',
+            ],
+            link: 'https://order-ai-v3.vercel.app/',
+            github: 'https://github.com/cedricdsst/orderAI',
+            image: '/projects/orderai.png',
+        }
+
+        projects[0] = language === 'fr' ? frProject : enProject
+    }
 
     return (
         <section id="experience" className="py-20 bg-dark-800 relative overflow-hidden">
@@ -129,8 +180,15 @@ const ExperienceSection = () => {
                                 whileHover={{ scale: 1.02, y: -5 }}
                                 className="glass rounded-xl border border-white/10 hover:border-accent/30 transition-all duration-300 overflow-hidden group"
                             >
-                                <div className="aspect-video bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
-                                    <div className="text-accent/60 text-6xl">🚀</div>
+                                <div className="aspect-video bg-dark-900/40 overflow-hidden">
+                                    {project.image ? (
+                                        // eslint-disable-next-line @next/next/no-img-element
+                                        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                                    ) : (
+                                        <div className="h-full w-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
+                                            <div className="text-accent/60 text-6xl">🚀</div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="p-6">
@@ -162,7 +220,9 @@ const ExperienceSection = () => {
 
                                     <div className="flex gap-3">
                                         <motion.a
-                                            href={project.link}
+                                            href={project.link ?? '#'}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-accent text-dark-900 font-semibold rounded-lg hover:bg-accent/90 transition-colors duration-300 text-sm"
@@ -171,7 +231,9 @@ const ExperienceSection = () => {
                                             {t.experience.demo}
                                         </motion.a>
                                         <motion.a
-                                            href={project.github}
+                                            href={project.github ?? '#'}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-accent text-accent rounded-lg hover:bg-accent/10 transition-colors duration-300 text-sm"
@@ -182,6 +244,32 @@ const ExperienceSection = () => {
                                 </div>
                             </motion.div>
                         ))}
+                    </div>
+
+                    {/* More projects on GitHub */}
+                    <div className="mt-10 flex items-center justify-center gap-4">
+                        <p className="text-gray-300 text-sm sm:text-base">
+                            {language === 'fr' ? 'Plus de projets disponibles sur mon ' : 'More projects available on my '}
+                            <a
+                                href="https://github.com/cedricdsst"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-accent hover:underline"
+                            >
+                                GitHub
+                            </a>
+                        </p>
+                        <motion.a
+                            href="https://github.com/cedricdsst"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-400 hover:text-accent hover:border-accent/50 transition-all duration-300"
+                            aria-label="GitHub"
+                        >
+                            <Github size={20} />
+                        </motion.a>
                     </div>
                 </motion.div>
             </div>

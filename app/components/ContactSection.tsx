@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useForm } from 'react-hook-form'
-import { Send, Mail, Phone, MapPin, CheckCircle, AlertCircle, Clock } from 'lucide-react'
+import { Send, Mail, MapPin, CheckCircle, AlertCircle, Clock } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 interface FormData {
@@ -111,19 +111,13 @@ const ContactSection = () => {
         {
             icon: Mail,
             label: t.contact.info.email,
-            value: "contact@votre-email.com",
-            href: "mailto:contact@votre-email.com"
-        },
-        {
-            icon: Phone,
-            label: t.contact.info.phone,
-            value: "+33 1 23 45 67 89",
-            href: "tel:+33123456789"
+            value: "contact@cedricdsst.com",
+            href: "mailto:contact@cedricdsst.com"
         },
         {
             icon: MapPin,
             label: t.contact.info.location,
-            value: "Paris, France",
+            value: "Lyon, France",
             href: "#"
         }
     ]

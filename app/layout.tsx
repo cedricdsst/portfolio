@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { LanguageProvider } from './i18n/LanguageContext'
+import ScrollManager from './components/ScrollManager'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,6 +40,7 @@ export default function RootLayout({
 
                         {/* Main content */}
                         <main className="relative z-10">
+                            <ScrollManager />
                             {children}
                         </main>
 
