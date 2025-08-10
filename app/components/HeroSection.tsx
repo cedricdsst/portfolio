@@ -109,7 +109,7 @@ function HeroContent({ itemVariants }: { itemVariants: any }) {
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => scrollToSection('#experience')}
+                        onClick={() => scrollToSection('#projects')}
                         className="px-6 sm:px-8 py-3 sm:py-4 border border-accent text-accent font-semibold rounded-lg hover:bg-accent/10 transition-all duration-300 w-full sm:w-auto sm:min-w-[180px] text-sm sm:text-base"
                     >
                         {t.hero.ctaProjects}

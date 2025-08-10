@@ -9,6 +9,7 @@ import SkillsSection from './components/SkillsSection'
 import ExperienceSection from './components/ExperienceSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import ProjectsSection from './components/ProjectsSection'
 
 export default function Home() {
     return (
@@ -24,6 +25,9 @@ export default function Home() {
 
             {/* Skills Section */}
             <SkillsSection />
+
+            {/* Projects Section */}
+            <ProjectsSection />
 
             {/* Experience Section */}
             <ExperienceSection />

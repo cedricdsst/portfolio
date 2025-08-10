@@ -8,6 +8,7 @@ export const dictionaries = {
             about: 'À propos',
             skills: 'Compétences',
             experience: 'Expérience',
+            projects: 'Projets',
             contact: 'Contact',
         },
         switcher: {
@@ -84,9 +85,8 @@ export const dictionaries = {
         },
         experience: {
             title: 'Expérience',
-            blurb:
-                "Parcours professionnel et projets qui illustrent ma passion pour l'innovation technologique",
-            jobsTitle: 'Expériences Professionnelles',
+            blurb: 'Parcours professionnel',
+            jobsTitle: '',
             achievementsTitle: 'Réalisations clés :',
             projectsTitle: 'Projets Personnels',
             featuresTitle: 'Fonctionnalités :',
@@ -241,6 +241,7 @@ export const dictionaries = {
             about: 'About',
             skills: 'Skills',
             experience: 'Experience',
+            projects: 'Projects',
             contact: 'Contact',
         },
         switcher: {
@@ -312,9 +313,8 @@ export const dictionaries = {
         },
         experience: {
             title: 'Experience',
-            blurb:
-                'Professional background and projects that showcase my passion for technological innovation',
-            jobsTitle: 'Professional Experience',
+            blurb: 'Professional background',
+            jobsTitle: '',
             achievementsTitle: 'Key achievements:',
             projectsTitle: 'Personal Projects',
             featuresTitle: 'Features:',
