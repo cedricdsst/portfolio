@@ -23,12 +23,12 @@ const SkillsSection = () => {
             strokeColor: "rgb(59, 130, 246)", // blue-500
             fillColor: "rgba(59, 130, 246, 0.1)",
             data: [
-                { skill: "React", value: 95, fullMark: 100 },
-                { skill: "Next.js", value: 90, fullMark: 100 },
-                { skill: "TypeScript", value: 88, fullMark: 100 },
-                { skill: "Tailwind", value: 92, fullMark: 100 },
-                { skill: "CSS/SCSS", value: 85, fullMark: 100 },
-                { skill: "JavaScript", value: 90, fullMark: 100 }
+                { skill: "React", value: 80, fullMark: 100 },
+                { skill: "Next.js", value: 75, fullMark: 100 },
+                { skill: "TypeScript", value: 73, fullMark: 100 },
+                { skill: "Tailwind", value: 77, fullMark: 100 },
+                { skill: "CSS/SCSS", value: 70, fullMark: 100 },
+                { skill: "JavaScript", value: 75, fullMark: 100 }
             ]
         },
         {
@@ -38,12 +38,12 @@ const SkillsSection = () => {
             strokeColor: "rgb(34, 197, 94)", // green-500
             fillColor: "rgba(34, 197, 94, 0.1)",
             data: [
-                { skill: "Node.js", value: 85, fullMark: 100 },
-                { skill: "Python", value: 90, fullMark: 100 },
-                { skill: "PostgreSQL", value: 80, fullMark: 100 },
+                { skill: "Node.js", value: 90, fullMark: 100 },
+                { skill: "Python", value: 70, fullMark: 100 },
+                { skill: "PostgreSQL", value: 85, fullMark: 100 },
                 { skill: "MongoDB", value: 75, fullMark: 100 },
                 { skill: "API REST", value: 88, fullMark: 100 },
-                { skill: "GraphQL", value: 70, fullMark: 100 }
+                { skill: "GraphQL", value: 65, fullMark: 100 }
             ]
         },
         {
@@ -70,7 +70,7 @@ const SkillsSection = () => {
             data: [
                 { skill: "Docker", value: 82, fullMark: 100 },
                 { skill: "Kubernetes", value: 65, fullMark: 100 },
-                { skill: "AWS", value: 75, fullMark: 100 },
+                { skill: "AWS", value: 60, fullMark: 100 },
                 { skill: "Vercel", value: 90, fullMark: 100 },
                 { skill: "CI/CD", value: 78, fullMark: 100 },
                 { skill: "Linux", value: 80, fullMark: 100 }
