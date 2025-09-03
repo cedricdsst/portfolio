@@ -69,7 +69,7 @@ const SkillsSection = () => {
             fillColor: "rgba(249, 115, 22, 0.1)",
             data: [
                 { skill: "Docker", value: 82, fullMark: 100 },
-                { skill: "Git", value: 95, fullMark: 100 },
+                { skill: "Kubernetes", value: 65, fullMark: 100 },
                 { skill: "AWS", value: 75, fullMark: 100 },
                 { skill: "Vercel", value: 90, fullMark: 100 },
                 { skill: "CI/CD", value: 78, fullMark: 100 },
@@ -115,7 +115,7 @@ const SkillsSection = () => {
                         <span suppressHydrationWarning>{t.skills.degreesTitle}</span>
                     </h3>
 
-                    <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {diplomas.map((diploma, index) => (
                             <motion.div
                                 key={index}
@@ -132,7 +132,7 @@ const SkillsSection = () => {
                                     </div>
                                     <motion.span
                                         whileHover={{ scale: 1.1 }}
-                                        className="text-gray-400 text-sm bg-dark-700 px-3 py-1 rounded-full border border-gray-600"
+                                        className="text-gray-400 text-xs bg-dark-700 px-3 py-2 rounded-full border border-gray-600 whitespace-nowrap min-w-[80px] text-center flex-shrink-0"
                                     >
                                         {diploma.year}
                                     </motion.span>

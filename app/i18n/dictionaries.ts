@@ -63,16 +63,22 @@ export const dictionaries = {
             degreesTitle: 'Diplômes & Formation',
             degrees: [
                 {
-                    title: 'Master en Informatique',
-                    school: 'Université de Technologie',
-                    year: '2022',
-                    specialty: 'Intelligence Artificielle & Machine Learning',
+                    title: 'Master Expert en Ingénierie Informatique',
+                    school: 'ESGI Lyon',
+                    year: '2023 - 2025',
+                    specialty: 'Spécialisation en développement cloud et architectures distribuées',
                 },
                 {
-                    title: 'Licence Informatique',
-                    school: 'Institut Supérieur du Numérique',
-                    year: '2020',
-                    specialty: 'Développement Web & Mobile',
+                    title: 'Bachelor Expert en Ingénierie Informatique',
+                    school: 'ESGI Lyon',
+                    year: '2022 - 2023',
+                    specialty: 'Formation en développement web full-stack et technologies modernes',
+                },
+                {
+                    title: 'BTS SIO - Services Informatiques aux Organisations',
+                    school: 'SCIENCES-U Lyon',
+                    year: '2020 - 2022',
+                    specialty: 'Formation en services informatiques et gestion des systèmes d\'information',
                 },
             ],
             techTitle: 'Compétences Techniques',
@@ -143,41 +149,32 @@ export const dictionaries = {
             ],
             projects: [
                 {
-                    title: 'AI Content Generator',
+                    title: 'CamVisualizer',
                     description:
-                        'Plateforme de génération de contenu intelligent utilisant GPT-4 pour créer du contenu optimisé SEO.',
-                    technologies: ['Next.js', 'OpenAI API', 'Prisma', 'PostgreSQL'],
+                        'Application de visualisation 3D permettant de retranscrire les positions de personnes depuis différents flux vidéo dans une scène 3D en temps réel grâce à l\'IA.',
+                    technologies: ['Three.js', 'YOLO', 'AI Depth Mapping', 'JavaScript', 'WebGL'],
                     features: [
-                        "Génération automatique d'articles",
-                        'Optimisation SEO intelligente',
-                        'Interface utilisateur intuitive',
-                        'Dashboard analytique',
+                        'Reconnaissance humaine avec YOLO',
+                        'Calcul de profondeur par IA',
+                        'Visualisation 3D en temps réel',
+                        'Gestion de salles et caméras',
+                        'Configuration spatiale réaliste',
                     ],
                 },
                 {
-                    title: 'Smart Analytics Dashboard',
+                    title: 'Orassio',
                     description:
-                        "Dashboard d'analyse prédictive utilisant l'IA pour identifier les tendances et anomalies dans les données.",
-                    technologies: ['React', 'Python', 'TensorFlow', 'D3.js'],
+                        'SaaS permettant d\'intégrer facilement un agent IA sur votre site web d\'entreprise via une simple balise script. L\'agent connaît toutes les informations de votre entreprise et peut collecter les contacts des utilisateurs.',
+                    technologies: ['Next.js', 'PydanticAI', 'OpenAI API', 'Python', 'TypeScript'],
                     features: [
-                        'Analyse prédictive en temps réel',
-                        'Détection d\'anomalies automatique',
-                        'Visualisations interactives',
-                        'Alertes intelligentes',
+                        'Intégration simple via balise script',
+                        'Agent IA personnalisé par entreprise',
+                        'Collecte automatique de contacts',
+                        'Interface d\'administration complète',
+                        'Réponses contextuelles intelligentes',
                     ],
                 },
-                {
-                    title: 'E-commerce AI Recommender',
-                    description:
-                        "Système de recommandation intelligent pour plateforme e-commerce basé sur l'analyse comportementale.",
-                    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'TensorFlow'],
-                    features: [
-                        'Recommandations personnalisées',
-                        'Analyse comportementale',
-                        'A/B testing intégré',
-                        'Performance optimisée',
-                    ],
-                },
+
             ],
         },
         contact: {
@@ -291,16 +288,22 @@ export const dictionaries = {
             degreesTitle: 'Degrees & Education',
             degrees: [
                 {
-                    title: 'Master\'s in Computer Science',
-                    school: 'University of Technology',
-                    year: '2022',
-                    specialty: 'Artificial Intelligence & Machine Learning',
+                    title: 'Master Expert in Computer Engineering',
+                    school: 'ESGI Lyon',
+                    year: '2023 - 2025',
+                    specialty: 'Specialization in cloud development and distributed architectures',
                 },
                 {
-                    title: 'Bachelor in Computer Science',
-                    school: 'Institute of Digital Technology',
-                    year: '2020',
-                    specialty: 'Web & Mobile Development',
+                    title: 'Bachelor Expert in Computer Engineering',
+                    school: 'ESGI Lyon',
+                    year: '2022 - 2023',
+                    specialty: 'Training in full-stack web development and modern technologies',
+                },
+                {
+                    title: 'BTS SIO - IT Services for Organizations',
+                    school: 'SCIENCES-U Lyon',
+                    year: '2020 - 2022',
+                    specialty: 'Training in IT services and information systems management',
                 },
             ],
             techTitle: 'Technical Skills',
@@ -371,41 +374,32 @@ export const dictionaries = {
             ],
             projects: [
                 {
-                    title: 'AI Content Generator',
+                    title: 'CamVisualizer',
                     description:
-                        'Intelligent content generation platform using GPT-4 to create SEO-optimized content.',
-                    technologies: ['Next.js', 'OpenAI API', 'Prisma', 'PostgreSQL'],
+                        '3D visualization application that transcribes person positions from multiple video feeds into a real-time 3D scene using AI.',
+                    technologies: ['Three.js', 'YOLO', 'AI Depth Mapping', 'JavaScript', 'WebGL'],
                     features: [
-                        'Automatic article generation',
-                        'Smart SEO optimization',
-                        'Intuitive user interface',
-                        'Analytics dashboard',
+                        'Human recognition with YOLO',
+                        'AI depth map calculation',
+                        'Real-time 3D visualization',
+                        'Room and camera management',
+                        'Realistic spatial configuration',
                     ],
                 },
                 {
-                    title: 'Smart Analytics Dashboard',
+                    title: 'Orassio',
                     description:
-                        'Predictive analytics dashboard using AI to identify trends and anomalies in data.',
-                    technologies: ['React', 'Python', 'TensorFlow', 'D3.js'],
+                        'SaaS that allows easy integration of an AI agent on your company website using a simple script tag. The agent knows all your company information and can collect user contact details.',
+                    technologies: ['Next.js', 'PydanticAI', 'OpenAI API', 'Python', 'TypeScript'],
                     features: [
-                        'Real-time predictive analysis',
-                        'Automatic anomaly detection',
-                        'Interactive visualizations',
-                        'Smart alerts',
+                        'Simple integration via script tag',
+                        'AI agent customized per company',
+                        'Automatic contact collection',
+                        'Complete admin interface',
+                        'Smart contextual responses',
                     ],
                 },
-                {
-                    title: 'E-commerce AI Recommender',
-                    description:
-                        'Intelligent recommendation system for e-commerce platforms based on behavioral analysis.',
-                    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'TensorFlow'],
-                    features: [
-                        'Personalized recommendations',
-                        'Behavioral analysis',
-                        'Built-in A/B testing',
-                        'Optimized performance',
-                    ],
-                },
+
             ],
         },
         contact: {

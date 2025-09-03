@@ -13,7 +13,6 @@ const ProjectsSection = () => {
     type ProjectCard = {
         title: string
         description: string
-        image?: string
         video?: string
         technologies: string[]
         features: string[]
@@ -28,16 +27,16 @@ const ProjectsSection = () => {
         features: [...p.features].map(String),
     }))
 
-    // Inject real OrderAI project as first card
+    // Inject real projects as first and second cards
     if (projects.length > 0) {
-        const common = {
+        // OrderAI project (first card)
+        const orderAICommon = {
             technologies: ['Next.js', 'OpenAI API', 'TypeScript', 'Tailwind', 'Vercel'],
             link: 'https://order-ai-v3.vercel.app/',
             github: 'https://github.com/cedricdsst/orderAI',
-            image: '/projects/orderai.png',
             video: '/projects/orderai.mp4',
         }
-        const frProject: ProjectCard = {
+        const frOrderAI: ProjectCard = {
             title: 'OrderAI',
             description: "Application Next.js simulant une prise de commande en drive-through pilotée par l'IA.",
             features: [
@@ -45,9 +44,9 @@ const ProjectsSection = () => {
                 '🔒 Anti-hallucination (validation stricte côté serveur)',
                 '✅ Détection intelligente de fin de commande',
             ],
-            ...common,
+            ...orderAICommon,
         }
-        const enProject: ProjectCard = {
+        const enOrderAI: ProjectCard = {
             title: 'OrderAI',
             description: 'Next.js app simulating an AI-powered drive-through ordering flow.',
             features: [
@@ -55,9 +54,77 @@ const ProjectsSection = () => {
                 '🔒 Anti-hallucination (strict server-side validation)',
                 '✅ Smart end-of-order detection',
             ],
-            ...common,
+            ...orderAICommon,
         }
-        projects[0] = language === 'fr' ? frProject : enProject
+        projects[0] = language === 'fr' ? frOrderAI : enOrderAI
+
+        // CamVisualizer project (second card)
+        if (projects.length > 1) {
+            const camVisualizerCommon = {
+                technologies: ['Three.js', 'YOLO', 'AI Depth Mapping', 'JavaScript', 'WebGL'],
+                github: 'https://github.com/cedricdsst/camVisualizer',
+                video: '/projects/camVisualizer.mp4',
+            }
+            const frCamVisualizer: ProjectCard = {
+                title: 'CamVisualizer',
+                description: 'Application de visualisation 3D permettant de retranscrire les positions de personnes depuis différents flux vidéo dans une scène 3D en temps réel grâce à l\'IA.',
+                features: [
+                    '🤖 Reconnaissance humaine avec YOLO',
+                    '📏 Calcul de profondeur par IA',
+                    '🎮 Visualisation 3D en temps réel',
+                    '🏠 Gestion de salles et caméras',
+                    '📐 Configuration spatiale réaliste',
+                ],
+                ...camVisualizerCommon,
+            }
+            const enCamVisualizer: ProjectCard = {
+                title: 'CamVisualizer',
+                description: '3D visualization application that transcribes person positions from multiple video feeds into a real-time 3D scene using AI.',
+                features: [
+                    '🤖 Human recognition with YOLO',
+                    '📏 AI depth map calculation',
+                    '🎮 Real-time 3D visualization',
+                    '🏠 Room and camera management',
+                    '📐 Realistic spatial configuration',
+                ],
+                ...camVisualizerCommon,
+            }
+            projects[1] = language === 'fr' ? frCamVisualizer : enCamVisualizer
+        }
+
+        // Orassio project (third card)
+        if (projects.length > 0) {
+            const orassioCommon = {
+                technologies: ['Next.js', 'PydanticAI', 'OpenAI API', 'Python', 'TypeScript'],
+                video: '/projects/orassio.mp4',
+            }
+            const frOrassio: ProjectCard = {
+                title: 'Orassio',
+                description: 'SaaS permettant d\'intégrer facilement un agent IA sur votre site web d\'entreprise via une simple balise script. L\'agent connaît toutes les informations de votre entreprise et peut collecter les contacts des utilisateurs.',
+                features: [
+                    '⚡ Intégration simple via balise script',
+                    '🤖 Agent IA personnalisé par entreprise',
+                    '📞 Collecte automatique de contacts',
+                    '⚙️ Interface d\'administration complète',
+                    '🧠 Réponses contextuelles intelligentes',
+                ],
+                ...orassioCommon,
+            }
+            const enOrassio: ProjectCard = {
+                title: 'Orassio',
+                description: 'SaaS that allows easy integration of an AI agent on your company website using a simple script tag. The agent knows all your company information and can collect user contact details.',
+                features: [
+                    '⚡ Simple integration via script tag',
+                    '🤖 AI agent customized per company',
+                    '📞 Automatic contact collection',
+                    '⚙️ Complete admin interface',
+                    '🧠 Smart contextual responses',
+                ],
+                ...orassioCommon,
+            }
+            // Add Orassio as the third project (push to array)
+            projects.push(language === 'fr' ? frOrassio : enOrassio)
+        }
     }
 
     return (
@@ -95,7 +162,7 @@ const ProjectsSection = () => {
                                 animate={inView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
                                 whileHover={{ scale: 1.02, y: -5 }}
-                                className="glass rounded-xl border border-white/10 hover:border-accent/30 transition-all duration-300 overflow-hidden group"
+                                className="glass rounded-xl border border-white/10 hover:border-accent/30 transition-all duration-300 overflow-hidden group flex flex-col"
                                 onMouseEnter={(e) => {
                                     const video = e.currentTarget.querySelector('video') as HTMLVideoElement | null
                                     if (video) {
@@ -115,32 +182,17 @@ const ProjectsSection = () => {
                                     }
                                 }}
                             >
-                                <div className="aspect-video relative bg-dark-900/40 overflow-hidden">
-                                    {project.image ? (
-                                        <>
-                                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-0"
-                                            />
-                                            {project.video && (
-                                                <video
-                                                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-                                                    src={project.video}
-                                                    muted
-                                                    playsInline
-                                                    autoPlay
-                                                    loop
-                                                    preload="auto"
-                                                    aria-label={`${project.title} demo video`}
-                                                    onCanPlay={(e) => {
-                                                        const v = e.currentTarget
-                                                        if (v.paused) v.play().catch(() => { })
-                                                    }}
-                                                />
-                                            )}
-                                        </>
+                                <div className="aspect-video relative bg-dark-900/40 overflow-hidden flex-shrink-0">
+                                    {project.video ? (
+                                        <video
+                                            className="absolute inset-0 w-full h-full object-cover"
+                                            src={project.video}
+                                            muted
+                                            playsInline
+                                            loop
+                                            preload="metadata"
+                                            aria-label={`${project.title} demo video`}
+                                        />
                                     ) : (
                                         <div className="h-full w-full bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center">
                                             <div className="text-accent/60 text-6xl">🚀</div>
@@ -148,7 +200,7 @@ const ProjectsSection = () => {
                                     )}
                                 </div>
 
-                                <div className="p-6">
+                                <div className="p-6 flex flex-col flex-grow">
                                     <h4 className="text-xl font-bold text-white mb-3">{project.title}</h4>
                                     <p className="text-gray-300 mb-4 leading-relaxed">{project.description}</p>
 
@@ -176,18 +228,28 @@ const ProjectsSection = () => {
                                         ))}
                                     </div>
 
-                                    <div className="flex gap-3">
-                                        <motion.a
-                                            href={project.link ?? '#'}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-accent text-dark-900 font-semibold rounded-lg hover:bg-accent/90 transition-colors duration-300 text-sm"
-                                        >
-                                            <ExternalLink size={16} />
-                                            {t.experience.demo}
-                                        </motion.a>
+                                    {/* Flexible space that grows to push buttons to bottom */}
+                                    <div className="flex-grow"></div>
+
+                                    <div className="flex gap-3 mt-4">
+                                        {project.link ? (
+                                            <motion.a
+                                                href={project.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-accent text-dark-900 font-semibold rounded-lg hover:bg-accent/90 transition-colors duration-300 text-sm"
+                                            >
+                                                <ExternalLink size={16} />
+                                                {t.experience.demo}
+                                            </motion.a>
+                                        ) : (
+                                            <div className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-600 text-gray-400 font-semibold rounded-lg cursor-not-allowed text-sm">
+                                                <ExternalLink size={16} />
+                                                {t.experience.demo}
+                                            </div>
+                                        )}
                                         <motion.a
                                             href={project.github ?? '#'}
                                             target="_blank"
@@ -196,6 +258,7 @@ const ProjectsSection = () => {
                                             whileTap={{ scale: 0.95 }}
                                             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-accent text-accent rounded-lg hover:bg-accent/10 transition-colors duration-300 text-sm"
                                         >
+                                            <Github size={16} />
                                             {t.experience.code}
                                         </motion.a>
                                     </div>
