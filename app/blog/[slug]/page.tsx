@@ -2,7 +2,9 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getArticleBySlug, getAllArticles } from '@/lib/articles'
-import { ArrowLeft, Calendar, Clock } from 'lucide-react'
+import { ArrowLeft, Calendar } from 'lucide-react'
+import Navigation from '@/app/components/Navigation'
+import Footer from '@/app/components/Footer'
 
 interface ArticlePageProps {
     params: {
@@ -115,6 +117,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
             />
+            <Navigation />
             <main className="min-h-screen bg-dark-900 pt-20">
                 <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     {/* Back Link */}
@@ -128,37 +131,20 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
                     {/* Header */}
                     <header className="mb-12">
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {article.tags.map((tag) => (
-                                <span 
-                                    key={tag}
-                                    className="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
+                        <div className="flex items-center gap-2 mb-4">
+                            <Calendar size={18} className="text-accent" />
+                            <time dateTime={article.publishedAt} className="text-gray-400">
+                                {new Date(article.publishedAt).toLocaleDateString('fr-FR', {
+                                    day: 'numeric',
+                                    month: 'long',
+                                    year: 'numeric',
+                                })}
+                            </time>
                         </div>
                         
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                             {article.title}
                         </h1>
-                        
-                        <div className="flex items-center gap-6 text-gray-400">
-                            <div className="flex items-center gap-2">
-                                <Calendar size={18} />
-                                <time dateTime={article.publishedAt}>
-                                    {new Date(article.publishedAt).toLocaleDateString('fr-FR', {
-                                        day: 'numeric',
-                                        month: 'long',
-                                        year: 'numeric',
-                                    })}
-                                </time>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Clock size={18} />
-                                <span>{article.readingTime} min de lecture</span>
-                            </div>
-                        </div>
                     </header>
 
                     {/* Content */}
@@ -183,6 +169,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     </div>
                 </article>
             </main>
+            <Footer />
         </>
     )
 }

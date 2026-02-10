@@ -18,6 +18,7 @@ const Footer = () => {
         { name: t.nav.about, href: '#about' },
         { name: t.nav.skills, href: '#skills' },
         { name: t.nav.projects, href: '#projects' },
+        { name: 'Blog', href: '/blog' },
         { name: t.nav.experience, href: '#experience' },
         { name: t.nav.contact, href: '#contact' }
     ]

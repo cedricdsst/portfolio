@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { getAllArticles } from '@/lib/articles'
 import ArticleCard from '@/app/components/blog/ArticleCard'
+import Navigation from '@/app/components/Navigation'
+import Footer from '@/app/components/Footer'
 
 export const metadata: Metadata = {
     title: 'Blog IA | Veille Technologique Intelligence Artificielle',
@@ -51,6 +53,7 @@ export default async function BlogPage() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
             />
+            <Navigation />
             <main className="min-h-screen bg-dark-900 pt-20">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     {/* Header */}
@@ -92,6 +95,7 @@ export default async function BlogPage() {
                     </div>
                 </div>
             </main>
+            <Footer />
         </>
     )
 }
