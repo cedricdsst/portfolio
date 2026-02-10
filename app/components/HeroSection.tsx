@@ -116,24 +116,22 @@ function HeroContent({ itemVariants }: { itemVariants: any }) {
                 </motion.button>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Social Links - animation couleur seulement */}
             <motion.div variants={itemVariants} className="flex gap-4 sm:gap-6 lg:gap-8 justify-center mb-16 sm:mb-20">
                 {[
                     { icon: Github, href: 'https://github.com/cedricdsst', label: t.hero.socials.github },
                     { icon: Linkedin, href: 'https://www.linkedin.com/in/c%C3%A9dric-dousset-951110210/', label: t.hero.socials.linkedin },
                     { icon: Twitter, href: 'https://x.com/cedric_dsst', label: t.hero.socials.twitter }
                 ].map(({ icon: Icon, href, label }) => (
-                    <motion.a
+                    <a
                         key={label}
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.2, y: -5 }}
-                        whileTap={{ scale: 0.9 }}
                         className="text-gray-400 hover:text-accent transition-colors duration-300 p-3 rounded-full border border-gray-600 hover:border-accent glass"
                     >
                         <Icon size={24} />
-                    </motion.a>
+                    </a>
                 ))}
             </motion.div>
         </>
