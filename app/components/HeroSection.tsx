@@ -67,24 +67,27 @@ function HeroContent({ itemVariants }: { itemVariants: any }) {
 
     return (
         <>
-            {/* Name */}
+            {/* Name - H1 unique pour SEO */}
             <motion.div variants={itemVariants} className="mb-8 sm:mb-12">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
                     <span className="text-accent">{t.hero.name}</span>
-                </h2>
+                    <span className="block text-lg sm:text-xl md:text-2xl font-normal text-gray-300 mt-2">
+                        Développeur Web & Intelligence Artificielle
+                    </span>
+                </h1>
             </motion.div>
 
             {/* Title AND Subtitle AND CTA Buttons AND Social Links combined */}
             <motion.div variants={itemVariants}>
-                {/* Title */}
-                <h1 className="mb-8 sm:mb-12">
+                {/* Title - H2 car H1 déjà utilisé pour le nom */}
+                <h2 className="mb-8 sm:mb-12">
                     <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold gradient-text leading-tight block sm:inline">
                         {t.hero.titleMain}
                     </span>
                     <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight block sm:inline sm:ml-4 mt-2 sm:mt-0">
                         {t.hero.titleAnd}
                     </span>
-                </h1>
+                </h2>
 
                 {/* Subtitle */}
                 <div className="mb-12 sm:mb-16 max-w-3xl mx-auto">
