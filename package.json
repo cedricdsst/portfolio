@@ -14,6 +14,7 @@
         "@types/react-dom": "^18",
         "autoprefixer": "^10.0.1",
         "framer-motion": "^10.16.5",
+        "gray-matter": "^4.0.3",
         "lucide-react": "^0.525.0",
         "next": "14.2.30",
         "postcss": "^8",
@@ -22,6 +23,8 @@
         "react-hook-form": "^7.60.0",
         "react-intersection-observer": "^9.5.3",
         "recharts": "^3.1.0",
+        "remark": "^15.0.1",
+        "remark-html": "^16.0.1",
         "resend": "^2.0.0",
         "tailwindcss": "^3.3.0",
         "typescript": "^5"
