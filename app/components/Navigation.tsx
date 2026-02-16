@@ -3,12 +3,16 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import LanguageSwitcher from './LanguageSwitcher'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const pathname = usePathname()
+    const isHomePage = pathname === '/'
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,6 +40,18 @@ const Navigation = () => {
         setIsOpen(false)
     }
 
+    const handleNavClick = (e: React.MouseEvent, href: string) => {
+        if (href.startsWith('#')) {
+            if (isHomePage) {
+                e.preventDefault()
+                scrollToSection(href)
+            } else {
+                // Sur une autre page, laisser le lien faire la navigation vers /#section
+                setIsOpen(false)
+            }
+        }
+    }
+
     return (
         <motion.nav
             initial={{ y: -100 }}
@@ -52,37 +68,27 @@ const Navigation = () => {
                         whileHover={{ scale: 1.05 }}
                         className="flex-shrink-0"
                     >
-                        <a
-                            href="#hero"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                scrollToSection('#hero')
-                            }}
+                        <Link
+                            href="/"
                             className="text-1xl font-bold gradient-text cursor-pointer"
                         >
                             &lt;CedricDSST/&gt;
-                        </a>
+                        </Link>
                     </motion.div>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-8">
                             {navItems.map((item) => (
-                                <motion.a
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={(e) => {
-                                        if (item.href.startsWith('#')) {
-                                            e.preventDefault()
-                                            scrollToSection(item.href)
-                                        }
-                                    }}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="text-gray-300 hover:text-accent transition-colors duration-300 px-3 py-2 text-sm font-medium cursor-pointer"
-                                >
-                                    <span suppressHydrationWarning>{item.label}</span>
-                                </motion.a>
+                                <motion.div key={item.href} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                                    <Link
+                                        href={item.href.startsWith('#') && !isHomePage ? `/${item.href}` : item.href}
+                                        onClick={(e) => handleNavClick(e, item.href)}
+                                        className="text-gray-300 hover:text-accent transition-colors duration-300 px-3 py-2 text-sm font-medium cursor-pointer block"
+                                    >
+                                        <span suppressHydrationWarning>{item.label}</span>
+                                    </Link>
+                                </motion.div>
                             ))}
                             <LanguageSwitcher />
                         </div>
@@ -109,21 +115,15 @@ const Navigation = () => {
             >
                 <div className="px-2 pt-2 pb-3 space-y-1">
                     {navItems.map((item) => (
-                        <motion.a
-                            key={item.href}
-                            href={item.href}
-                            onClick={(e) => {
-                                if (item.href.startsWith('#')) {
-                                    e.preventDefault()
-                                    scrollToSection(item.href)
-                                }
-                            }}
-                            whileHover={{ x: 10 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="text-gray-300 hover:text-accent block px-3 py-2 text-base font-medium cursor-pointer"
-                        >
-                            {item.label}
-                        </motion.a>
+                        <motion.div key={item.href} whileHover={{ x: 10 }} whileTap={{ scale: 0.95 }}>
+                            <Link
+                                href={item.href.startsWith('#') && !isHomePage ? `/${item.href}` : item.href}
+                                onClick={(e) => handleNavClick(e, item.href)}
+                                className="text-gray-300 hover:text-accent block px-3 py-2 text-base font-medium cursor-pointer"
+                            >
+                                {item.label}
+                            </Link>
+                        </motion.div>
                     ))}
                     <div className="px-3 py-2"><LanguageSwitcher /></div>
                 </div>

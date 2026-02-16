@@ -2,10 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Twitter, Heart } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useLanguage } from '../i18n/LanguageContext'
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
+    const pathname = usePathname()
+    const isHomePage = pathname === '/'
 
     const { t } = useLanguage()
     const socialLinks = [
@@ -29,6 +33,13 @@ const Footer = () => {
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' })
             }
+        }
+    }
+
+    const handleNavClick = (e: React.MouseEvent, href: string) => {
+        if (href.startsWith('#') && isHomePage) {
+            e.preventDefault()
+            scrollToSection(href)
         }
     }
 
@@ -59,9 +70,8 @@ const Footer = () => {
                                 <motion.a
                                     key={label}
                                     href={href}
-                                    target={href.startsWith('http') ? "_blank" : undefined}
-                                    rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
-                                    onClick={href.startsWith('#') ? (e) => { e.preventDefault(); scrollToSection(href); } : undefined}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     whileHover={{ scale: 1.1, y: -2 }}
                                     whileTap={{ scale: 0.9 }}
                                     className="p-3 bg-dark-700 border border-gray-600 rounded-lg text-gray-400 hover:text-accent hover:border-accent/50 transition-all duration-300"
@@ -84,19 +94,15 @@ const Footer = () => {
                         <ul className="space-y-3">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
-                                    <motion.a
-                                        href={link.href}
-                                        onClick={(e) => {
-                                            if (link.href.startsWith('#')) {
-                                                e.preventDefault()
-                                                scrollToSection(link.href)
-                                            }
-                                        }}
-                                        whileHover={{ x: 5 }}
-                                        className="text-gray-300 hover:text-accent transition-colors duration-300 cursor-pointer"
+                                    <Link
+                                        href={link.href.startsWith('#') && !isHomePage ? `/${link.href}` : link.href}
+                                        onClick={(e) => handleNavClick(e, link.href)}
+                                        className="text-gray-300 hover:text-accent transition-colors duration-300 cursor-pointer inline-block"
                                     >
-                                        {link.name}
-                                    </motion.a>
+                                        <motion.span whileHover={{ x: 5 }} className="inline-block">
+                                            {link.name}
+                                        </motion.span>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
