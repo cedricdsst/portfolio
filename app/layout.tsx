@@ -13,6 +13,10 @@ export const metadata: Metadata = {
     authors: [{ name: 'Cédric DOUSSET', url: 'https://www.linkedin.com/in/c%C3%A9dric-dousset-951110210/' }],
     viewport: 'width=device-width, initial-scale=1',
     robots: 'index, follow',
+    icons: {
+        icon: '/favicon.ico',
+        apple: '/apple-icon.png',
+    },
     alternates: {
         canonical: 'https://cedricdousset.dev',
     },
