@@ -18,8 +18,8 @@ const Footer = () => {
         { name: t.nav.about, href: '#about' },
         { name: t.nav.skills, href: '#skills' },
         { name: t.nav.projects, href: '#projects' },
-        { name: 'Blog', href: '/blog' },
         { name: t.nav.experience, href: '#experience' },
+        { name: 'Blog', href: '/blog' },
         { name: t.nav.contact, href: '#contact' }
     ]
 
@@ -87,8 +87,10 @@ const Footer = () => {
                                     <motion.a
                                         href={link.href}
                                         onClick={(e) => {
-                                            e.preventDefault()
-                                            scrollToSection(link.href)
+                                            if (link.href.startsWith('#')) {
+                                                e.preventDefault()
+                                                scrollToSection(link.href)
+                                            }
                                         }}
                                         whileHover={{ x: 5 }}
                                         className="text-gray-300 hover:text-accent transition-colors duration-300 cursor-pointer"

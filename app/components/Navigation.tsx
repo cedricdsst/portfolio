@@ -23,8 +23,8 @@ const Navigation = () => {
         { href: '#about', label: t.nav.about },
         { href: '#skills', label: t.nav.skills },
         { href: '#projects', label: t.nav.projects },
-        { href: '/blog', label: 'Blog' },
         { href: '#experience', label: t.nav.experience },
+        { href: '/blog', label: 'Blog' },
         { href: '#contact', label: t.nav.contact },
     ]
 
@@ -72,8 +72,10 @@ const Navigation = () => {
                                     key={item.href}
                                     href={item.href}
                                     onClick={(e) => {
-                                        e.preventDefault()
-                                        scrollToSection(item.href)
+                                        if (item.href.startsWith('#')) {
+                                            e.preventDefault()
+                                            scrollToSection(item.href)
+                                        }
                                     }}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
@@ -111,8 +113,10 @@ const Navigation = () => {
                             key={item.href}
                             href={item.href}
                             onClick={(e) => {
-                                e.preventDefault()
-                                scrollToSection(item.href)
+                                if (item.href.startsWith('#')) {
+                                    e.preventDefault()
+                                    scrollToSection(item.href)
+                                }
                             }}
                             whileHover={{ x: 10 }}
                             whileTap={{ scale: 0.95 }}
